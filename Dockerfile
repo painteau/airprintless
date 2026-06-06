@@ -24,6 +24,7 @@ ENV TZ="Europe/Paris" \
     CUPS_ADMIN_PASSWORD="secr3t" \
     CUPS_SHARE_PRINTERS="yes" \
     CUPS_REMOTE_ADMIN="yes" \
+    PRINTER_NAME="AirPrint PDF" \
     PAPERLESS_ENABLED="no" \
     PAPERLESS_URL="" \
     PAPERLESS_TOKEN=""

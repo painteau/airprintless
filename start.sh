@@ -23,6 +23,8 @@ DefaultAuthType Basic
 
 WebInterface Yes
 DefaultEncryption Never
+BrowseLocalProtocols dnssd
+DNSSDBrowseWebIF Yes
 
 <Location />
   Order allow,deny
@@ -71,7 +73,7 @@ lpadmin -p PDF \
     -v cups-pdf:/ \
     -E \
     -o printer-is-shared=true \
-    -D "AirPrint PDF Printer"
+    -D "${PRINTER_NAME:-AirPrint PDF}"
 
 cupsaccept PDF
 cupsenable PDF
