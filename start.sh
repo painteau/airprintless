@@ -60,11 +60,9 @@ EOF
 # cups-pdf : sortie dans PDF_DIR pour tous les utilisateurs
 sed -i "s|^Out .*|Out $PDF_DIR|" /etc/cups/cups-pdf.conf 2>/dev/null || true
 
-# Avahi
-sed -i 's/#enable-dbus=yes/enable-dbus=no/' /etc/avahi/avahi-daemon.conf
-sed -i 's/use-ipv6=yes/use-ipv6=no/' /etc/avahi/avahi-daemon.conf
-mkdir -p /run/avahi-daemon
-avahi-daemon --daemonize --no-drop-root
+# Avahi — utiliser celui du host via socket partagé (network_mode: host)
+# Ne pas lancer un second avahi-daemon pour éviter le conflit sur port 5353
+avahi-daemon -c || avahi-daemon --daemonize --no-drop-root --no-chroot
 
 # Démarrer CUPS en fond pour configurer l'imprimante
 cupsd
@@ -115,11 +113,6 @@ cat > /etc/avahi/services/airprintless.service <<AVAHI
   </service>
 </service-group>
 AVAHI
-
-# Relancer avahi pour prendre en compte le service
-pkill avahi-daemon || true
-sleep 1
-avahi-daemon --daemonize --no-drop-root
 
 echo "[airprintless] CUPS prêt — imprimante PDF configurée"
 echo "[airprintless] Interface web : http://$(hostname -i):631"
