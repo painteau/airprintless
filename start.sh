@@ -117,7 +117,7 @@ echo "[airprintless] CUPS prêt — imprimante PDF configurée"
 echo "[airprintless] Interface web : http://$(hostname -i):631"
 
 # Lancer le watcher Paperless en fond
-if [ "$PAPERLESS_ENABLED" = "yes" ]; then
+if [ "${PAPERLESS_ENABLED,,}" = "yes" ]; then
     /paperless-watch.sh &
     echo "[airprintless] Watcher Paperless démarré"
 fi
