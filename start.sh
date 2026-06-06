@@ -108,6 +108,10 @@ cat > /etc/avahi/services/airprintless.service <<AVAHI
     <txt-record>Fax=F</txt-record>
     <txt-record>Scan=F</txt-record>
     <txt-record>copies=T</txt-record>
+    <txt-record>Transparent=T</txt-record>
+    <txt-record>product=(GPL Ghostscript)</txt-record>
+    <txt-record>printer-state=3</txt-record>
+    <txt-record>printer-type=0x10</txt-record>
   </service>
 </service-group>
 AVAHI
