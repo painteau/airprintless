@@ -46,6 +46,7 @@ services:
 | `PAPERLESS_ENABLED` | `no` | Set to `yes` (case-insensitive) to enable auto-upload |
 | `PAPERLESS_URL` | `` | Paperless-ngx base URL |
 | `PAPERLESS_TOKEN` | `` | Paperless-ngx API token (Settings > API Token) |
+| `PAPERLESS_DELETE` | `yes` | Delete local PDF after successful upload (`no` to keep a copy) |
 | `TZ` | `Europe/Paris` | Timezone |
 
 ## Paperless-ngx integration
