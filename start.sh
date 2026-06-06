@@ -15,6 +15,9 @@ echo "$CUPS_ADMIN_USER:$CUPS_ADMIN_PASSWORD" | chpasswd
 cat > /etc/cups/cupsd.conf <<EOF
 LogLevel warn
 MaxLogSize 0
+AccessLog stderr
+ErrorLog stderr
+PageLog stderr
 Listen 0.0.0.0:631
 Listen /run/cups/cups.sock
 ServerName $(hostname)
