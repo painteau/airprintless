@@ -83,6 +83,40 @@ lpadmin -p PDF \
 cupsaccept PDF
 cupsenable PDF
 
+# Générer le fichier service Avahi pour AirPrint
+mkdir -p /etc/avahi/services
+cat > /etc/avahi/services/airprintless.service <<AVAHI
+<?xml version="1.0" standalone='no'?>
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+  <name replace-wildcards="yes">${PRINTER_NAME:-AirPrint PDF} @ %h</name>
+  <service>
+    <type>_ipp._tcp</type>
+    <subtype>_universal._sub._ipp._tcp</subtype>
+    <port>631</port>
+    <txt-record>txtvers=1</txt-record>
+    <txt-record>qtotal=1</txt-record>
+    <txt-record>rp=printers/PDF</txt-record>
+    <txt-record>ty=${PRINTER_NAME:-AirPrint PDF}</txt-record>
+    <txt-record>adminurl=http://localhost:631/printers/PDF</txt-record>
+    <txt-record>note=Virtual PDF Printer</txt-record>
+    <txt-record>priority=0</txt-record>
+    <txt-record>pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/urf</txt-record>
+    <txt-record>URF=W8,SRGB24,CP255,RS600</txt-record>
+    <txt-record>Color=T</txt-record>
+    <txt-record>Duplex=F</txt-record>
+    <txt-record>Fax=F</txt-record>
+    <txt-record>Scan=F</txt-record>
+    <txt-record>copies=T</txt-record>
+  </service>
+</service-group>
+AVAHI
+
+# Relancer avahi pour prendre en compte le service
+pkill avahi-daemon || true
+sleep 1
+avahi-daemon --daemonize --no-drop-root
+
 echo "[airprintless] CUPS prêt — imprimante PDF configurée"
 echo "[airprintless] Interface web : http://$(hostname -i):631"
 
