@@ -1,0 +1,14 @@
+services:
+  airprintless:
+    image: airprintless:latest
+    container_name: airprintless
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - ./pdf:/var/spool/cups-pdf/ANONYMOUS
+    environment:
+      - CUPS_ADMIN_USER=admin
+      - CUPS_ADMIN_PASSWORD=secr3t
+      - PAPERLESS_ENABLED=no
+      - PAPERLESS_URL=https://paperless.example.com
+      - PAPERLESS_TOKEN=
