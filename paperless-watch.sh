@@ -18,7 +18,7 @@ while true; do
 
         if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "202" ]; then
             echo "[paperless-watch] Envoyé : $filename (HTTP $HTTP_CODE)"
-            rm -f "$filepath"
+            [ "${PAPERLESS_DELETE,,}" != "no" ] && rm -f "$filepath"
         else
             echo "[paperless-watch] ERREUR HTTP $HTTP_CODE : $filename"
         fi
