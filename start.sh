@@ -68,7 +68,9 @@ avahi-daemon --daemonize --no-drop-root
 
 # Démarrer CUPS en fond pour configurer l'imprimante
 cupsd
-sleep 3
+echo "[airprintless] Attente CUPS..."
+until curl -sf http://localhost:631/ > /dev/null 2>&1; do sleep 1; done
+echo "[airprintless] CUPS prêt"
 
 # Ajouter l'imprimante PDF
 lpadmin -p PDF \
