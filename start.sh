@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 PDF_DIR="/var/spool/cups-pdf/ANONYMOUS"
 mkdir -p "$PDF_DIR"
@@ -62,7 +61,7 @@ sed -i "s|^Out .*|Out $PDF_DIR|" /etc/cups/cups-pdf.conf 2>/dev/null || true
 
 # Avahi — utiliser celui du host via socket partagé (network_mode: host)
 # Ne pas lancer un second avahi-daemon pour éviter le conflit sur port 5353
-avahi-daemon -c || avahi-daemon --daemonize --no-drop-root --no-chroot
+avahi-daemon -c || avahi-daemon --daemonize --no-drop-root --no-chroot || echo "[airprintless] Avahi déjà géré par le host"
 
 # Démarrer CUPS en fond pour configurer l'imprimante
 cupsd
