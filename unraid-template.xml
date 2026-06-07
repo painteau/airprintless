@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>airprintless</Name>
+  <Repository>ghcr.io/painteau/airprintless:latest</Repository>
+  <Registry>https://github.com/painteau/airprintless/pkgs/container/airprintless</Registry>
+  <Network>host</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/painteau/airprintless</Support>
+  <Project>https://github.com/painteau/airprintless</Project>
+  <ReadMe/>
+  <Overview>Imprimante virtuelle AirPrint. Imprime depuis iPhone, iPad ou Mac, g&#xE9;n&#xE8;re un PDF et l'envoie automatiquement dans Paperless-ngx. Utilise CUPS + cups-pdf.</Overview>
+  <Category>Productivity: Tools:</Category>
+  <WebUI>http://[IP]:631/</WebUI>
+  <TemplateURL/>
+  <Icon>https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/icons/printer-fill.svg</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1780780892</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="PDF Output" Target="/var/spool/cups-pdf/ANONYMOUS" Default="/mnt/user/appdata/airprintless/pdf" Mode="rw" Description="Dossier temporaire des PDF g&#xE9;n&#xE9;r&#xE9;s (vid&#xE9; automatiquement si Paperless activ&#xE9;)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/airprintless/pdf</Config>
+  <Config Name="Nom imprimante" Target="PRINTER_NAME" Default="AirPrintless" Mode="" Description="Nom affich&#xE9; sur iPhone/iPad dans la liste des imprimantes AirPrint." Type="Variable" Display="always" Required="true" Mask="false">AirPrintless</Config>
+  <Config Name="Admin Username" Target="CUPS_ADMIN_USER" Default="admin" Mode="" Description="Login interface web CUPS (port 631)." Type="Variable" Display="always" Required="true" Mask="false">admin</Config>
+  <Config Name="Admin Password" Target="CUPS_ADMIN_PASSWORD" Default="" Mode="" Description="Mot de passe interface web CUPS." Type="Variable" Display="always" Required="true" Mask="true">turlututu94</Config>
+  <Config Name="Paperless activ&#xE9;" Target="PAPERLESS_ENABLED" Default="no" Mode="" Description="yes = envoie automatiquement les PDF vers Paperless-ngx et les supprime localement." Type="Variable" Display="always" Required="true" Mask="false">Yes</Config>
+  <Config Name="Paperless URL" Target="PAPERLESS_URL" Default="" Mode="" Description="URL de votre instance Paperless-ngx. Ex: https://paperless.monserveur.fr" Type="Variable" Display="always" Required="false" Mask="false">https://paperless.onode.fr</Config>
+  <Config Name="Paperless Token" Target="PAPERLESS_TOKEN" Default="" Mode="" Description="Token API Paperless-ngx (Settings &amp;gt; API Token)." Type="Variable" Display="always" Required="false" Mask="true">df532f3c3cc5e167ed6c14f00b384a218a00aedf</Config>
+  <Config Name="Timezone" Target="TZ" Default="Europe/Paris" Mode="" Description="Fuseau horaire." Type="Variable" Display="advanced" Required="false" Mask="false">Europe/Paris</Config>
+  <TailscaleStateDir/>
+</Container>

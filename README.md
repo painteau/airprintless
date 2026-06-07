@@ -69,9 +69,9 @@ When `PAPERLESS_ENABLED=no`, PDFs are saved to the mounted volume (`./pdf`) and 
 
 ## UNRAID template
 
-A Community Applications-compatible template is available in the [releases](https://github.com/painteau/airprintless).
+A Community Applications-compatible template is available at [`unraid-template.xml`](./unraid-template.xml).
 
-Add it via UNRAID > Docker > Add Container and search for `airprintless` in your user templates.
+To install: copy the file to `/boot/config/plugins/dockerMan/templates-user/` on your UNRAID server, then add the container via UNRAID > Docker > Add Container.
 
 ## Supported architectures
 
