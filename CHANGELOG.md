@@ -12,6 +12,16 @@ L'historique git reste la source de vérité pour ce qui précède.
 
 ## [Unreleased]
 
+### Modifié
+
+- **Le déploiement ne part plus sur un push de branche, mais sur un tag `vX.Y.Z`.** Pousser un
+  correctif de documentation ou une expérimentation sur `main` déclenchait jusqu'ici une livraison
+  en production, ce qui va contre la règle du parc et rend toute modification du dépôt risquée.
+  `workflow_dispatch` est conservé comme filet, ainsi que les crons de reconstruction et les
+  déclencheurs de `pull_request`, qui sont des vérifications et non des livraisons.
+- Volontairement **sans filtre de chemin** : GitHub combine (branches/tags) ET `paths`, ce qui rend
+  un déclencheur sur tag imprévisible dès qu'un filtre de chemin subsiste.
+
 ### Ajouté
 
 - **Convention changelog du parc posée sur ce dépôt** : ce fichier, les hooks `pre-commit` et
